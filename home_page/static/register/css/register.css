@@ -1,0 +1,32 @@
+form{
+
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 500px;
+
+}
+
+
+form h1 {
+
+    color: #fff;
+}
+
+
+form p label {
+
+    color: #fff;
+}
+
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+}
+.form-row > label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+}
+
+
+

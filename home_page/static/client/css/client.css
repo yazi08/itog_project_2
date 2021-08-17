@@ -1,0 +1,70 @@
+.client {
+    position: absolute;
+    background:black;
+    width: 18%;
+    padding: 2.5%;
+    height: 50%;
+    color: #fff;
+    border: 5px solid #4d4d4d;
+    margin-top: 200px;
+    margin-left: 700px;
+}
+
+
+.client h3 {
+    color:#FFD700;
+    text-align: center;
+    margin-top: 0px;
+
+
+}
+
+
+
+.client_2 {
+    position: absolute;
+    background:black;
+    width: 18%;
+    padding: 2.5%;
+    height: 50%;
+    color: #fff;
+    border: 5px solid #4d4d4d;
+    margin-top: 200px;
+    margin-left: 1100px;
+}
+
+.client_2 h3 {
+    color:#FFD700;
+    text-align: center;
+    margin-top: 0px;
+
+
+}
+
+.client_img {
+    margin-left: 30px;
+
+}
+.btn btn-warning {
+   margin-left: 30px;
+}
+
+.client button  {
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+
+}
+
+.client_2 button  {
+    margin-top: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+
+}
+
+.menu {
+    position:absolute;
+    bottom:0;
+    right:0;
+}

@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'home_page/css/home_page.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>Главная страница</title>
+</head>
+<body>
+
+    <aside>
+        <img src="{% static 'home_page/img/logo_2.png' %}" alt="Логотип">
+        <h3>Навигация</h3>
+        <ul>
+            <a href="{% url 'home_page' %}"><li><i class="fas fa-home"></i>Главная</li></a>
+            <a href=""><li><i class="fas fa-address-card"></i>Про нас</li></a>
+            <a href=""><li><i class="fas fa-paper-plane"></i></i>Контакты</li></a>
+        </ul>
+    </aside>
+
+    <nav>
+        <ul>
+            <a href="{% url 'register' %}"><li><button class="btn btn-warning">Регистрация</button></li></a>
+            <a href="{% url 'authentication' %}"><li><button class="btn btn-warning">Авторизация</button></li></a>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        <div class="blog">
+            <h1>Новости</h1>
+
+            {% for el in blog %}
+            <div class="alter alert-warning">
+
+
+                <h3>{{el.name_blog}}</h3>
+                <p>{{el.data_blog}}</p>
+                <p>{{el.athor_blog}}</p>
+                <a href="" class ="btn btn-warning">Читать далее</a>
+
+            </div>
+
+        {% endfor %}
+        </div>
+        {% endblock %}
+    </main>
+
+
+
+</body>
+</html>

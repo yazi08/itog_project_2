@@ -1,0 +1,20 @@
+{% extends "home_page/home_page.html" %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'register/css/register.css' %}">
+<form method="post">
+<h1>Регистрация</h1>
+    {% csrf_token %}
+
+
+    {% for f in form %}
+    <p class = "form-row"><label  for="{{f.id_for_label}}">{{f.label}}:</label>{{f}}</p>
+    <div>{{f.errors}}</div>
+
+    {% endfor %}
+    <button class="btn btn-warning">Авторизация</button>
+
+</form>
+{% endblock %}

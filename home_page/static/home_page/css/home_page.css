@@ -1,0 +1,88 @@
+body {
+    background: #2c2c2c;
+
+}
+
+
+aside{
+    float:left;
+    background:black;
+    width: 18%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+aside img {
+    margin-top:5px;
+    width: 170px;
+    float:left;
+}
+
+aside h3 {
+    margin-top:50px;
+    font-size: 28px;
+}
+aside ul {list-list: none}
+aside ul li {
+    color:#fff;
+    display: block;
+    margin-top: 20px;
+    transition: all .6s ease;
+
+}
+
+aside ul li:hover, aside ul a:hover {
+    color:#FFD700;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+nav{
+    float:right;
+    color:#fff;
+
+}
+
+nav ul {
+    list-style-type: none; /* Убираем маркеры */
+    margin-top: 20px;
+    margin-right: 10px;
+
+
+   }
+
+nav ul li {
+    display: inline; /* Отображать как строчный элемент */
+}
+
+
+
+main .blog{
+    float:left;
+    color:#fff;
+    margin-top:10px;
+    text-align:center;
+    width:75%;
+}
+
+.alert-warning{
+    border-radius: 10px;
+    float:left;
+    clear:both;
+    width:400px;
+    margin:20px 34%;
+    text-align:left;
+
+
+}
+.alert-warning a{
+    display: block;
+    text-align:center;
+
+}
+
+
+
+

@@ -1,0 +1,46 @@
+{% extends "home_page/home_page.html" %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'client/css/client.css' %}">
+
+
+
+
+<aside class = "client">
+  <h3>Бот по остатку</h3>
+  <img class = "client_img" src="{% static 'client/png/robot_1.png' %}" alt="Логотип">
+  <button  class="btn btn-warning">Перейти</button>
+</aside>
+
+<aside class = "client_2">
+  <h3>Бот по стратегии</h3>
+  <img class = "client_img" src="{% static 'client/png/robot_2.png' %}" alt="Логотип">
+  <button  class="btn btn-warning">Перейти</button>
+</aside>
+
+<nav  class = 'menu'>
+  <ul class="menu-list">
+    <li>
+      <a class="sub-menu_link" href=""></a>
+      <ul class="sub-menu_list">
+        <li>
+
+          <button  class="btn btn-warning">Информация</button>
+
+        </li>
+
+      </ul>
+    </li>
+  </ul>
+
+
+</nav>
+
+
+
+
+
+
+{% endblock %}
