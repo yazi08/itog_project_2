@@ -1,0 +1,22 @@
+{% extends "home_page/home_page.html" %}
+
+
+
+
+{% block content %}
+
+<form method="post">
+<h1>Регистрация</h1>
+    {% csrf_token %}
+    {{form.as_p}}
+
+
+
+
+
+
+
+    <button class="btn btn-warning">Авторизация</button>
+
+</form>
+{% endblock %}

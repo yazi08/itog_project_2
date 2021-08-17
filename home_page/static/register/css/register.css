@@ -28,5 +28,21 @@ form p label {
   flex: 1;
 }
 
+.client_img {
+    position: absolute;
+    width:700px;
+    left:500px;
+    top:80px;
 
+
+}
+
+.client_img_2 {
+    position: absolute;
+    width:550px;
+    left:500px;
+    top:10px;
+
+
+}
 

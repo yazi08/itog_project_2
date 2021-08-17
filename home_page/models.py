@@ -10,4 +10,25 @@ class Blog(models.Model):
 
 
 
+class SummClient(models.Model):
+    sum_client = models.FloatField('Сумма клиента')
 
+    def __str__(self):
+        return f"{self.sum_client}"
+
+    #
+    #
+    # class Meta:
+    #     ordering = ['sum_client']
+
+
+
+class SummClientItog(models.Model):
+    sum_client = models.FloatField('Сумма клиента')
+
+    def __str__(self):
+        return f"{self.sum_client}"
+
+    #
+    class Meta:
+        ordering = ['sum_client']

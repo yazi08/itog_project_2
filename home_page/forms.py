@@ -21,13 +21,14 @@ class RegisterUserForm(UserCreationForm):
 
         }
 
-
-
-
-
-
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
         fields = ['name_blog','athor_blog']
+
+
+class SummClientForm(ModelForm):
+    class Meta:
+        model = SummClientItog
+        fields = ['sum_client']
 
