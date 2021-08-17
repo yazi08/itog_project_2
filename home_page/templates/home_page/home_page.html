@@ -25,8 +25,15 @@
 
     <nav>
         <ul>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'register' %}"><li><button class="btn btn-warning">{{user.username}}</button></li></a>
+            <a href="{% url 'logout' %}"><li><button class="btn btn-warning">Выйти</button></li></a>
+
+            {% else %}
             <a href="{% url 'register' %}"><li><button class="btn btn-warning">Регистрация</button></li></a>
             <a href="{% url 'authentication' %}"><li><button class="btn btn-warning">Авторизация</button></li></a>
+            {% endif %}
+
         </ul>
     </nav>
 
@@ -47,9 +54,26 @@
             </div>
 
         {% endfor %}
+
+
         </div>
         {% endblock %}
     </main>
+    <div class="pagination">
+        <ul>
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li id = "pag">{{p}}</li>
+            {% else %}
+            <li>
+                <a id = "pag_1"  href="?page={{ p }}">{{ p }}</a>
+
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+    </div>
 
 
 

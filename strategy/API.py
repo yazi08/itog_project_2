@@ -1,18 +1,34 @@
+import django
+# from django.conf import settings
+#
+# # django.setup()
+#
+# settings.configure ()
 """ Бот по выводу определенной суммы"""
+
 # 6gFDmF4ohM.T5SNvB&%9xj!h^1Hy:%Yc
 # TXforrAh79JExWk8
 import json
 import requests
 import  asyncio
 import websockets
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "trade_bot.settings")
 from bot import *
 import time
 # wss://stream.binance.com:9443/stream?streams=ethusdt@miniTicker
 # wss://stream.binance.com:9443/stream?streams=btcusdt@kline_3m
-from
+from home_page.models import *
+a = Blog.objects.all()
+x = a.values().last()['id']
+
+print(x)
+
 btc_close = []
 btc_min = []
-x = input("Введите сумму:")
+
+
+# x = input("Введите сумму:")
 async def main():
     url = "wss://stream.binance.com:9443/stream?streams=btcusdt@kline_5m"
     async with websockets.connect(url) as client:

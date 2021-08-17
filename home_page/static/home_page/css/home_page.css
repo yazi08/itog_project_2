@@ -84,5 +84,35 @@ main .blog{
 }
 
 
+.pagination {
+    position: absolute;
+    top:900px;
+    left:950px;
+
+}
+.pagination ul{
+
+    text-align:center;
+
+
+}
+.pagination ul li {
+     display:inline-block;
+     display: inline;
+     padding: 8px 16px;
+     color: white;
+
+
+}
+#pag{
+     background-color: #4d4d4d ;
+     color: #fff;
+}
+
+#pag_1{
+    color: #fff;
+}
+
+
 
 

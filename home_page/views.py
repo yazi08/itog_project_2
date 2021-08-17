@@ -1,6 +1,7 @@
+from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
@@ -11,6 +12,7 @@ from .models import *
 #     return render(request, 'home_page/home_page.html')
 
 class HomeDetailView(ListView):
+    paginate_by = 3
     model = Blog
     template_name = "home_page/home_page.html"
     context_object_name = 'blog'
@@ -38,3 +40,7 @@ def client(request):
     return render(request, 'client/client.html')
 
 
+
+def logout_user(request):
+    logout(request)
+    return redirect('authentication')
