@@ -1,12 +1,13 @@
 {% extends "home_page/home_page.html" %}
-
+{% load static %}
 
 
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'bot/css/bot.css' %}">
 
 <form method="post">
-<h1>Регистрация</h1>
+<h1>Запуск робота</h1>
     {% csrf_token %}
     {{form.as_p}}
 
@@ -16,7 +17,7 @@
 
 
 
-    <button class="btn btn-warning">Авторизация</button>
+    <button class="btn btn-warning">Запуск</button>
 
 </form>
 {% endblock %}

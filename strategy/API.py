@@ -1,22 +1,23 @@
-
 """ Бот по выводу определенной суммы"""
-
+# from django.conf import settings
+#
+# settings.configure()
 # 6gFDmF4ohM.T5SNvB&%9xj!h^1Hy:%Yc
 # TXforrAh79JExWk8
 import json
 import requests
 import  asyncio
 import websockets
-
-from bot import *
+# from home_page.views import *
+# from bot import *
 import time
 # wss://stream.binance.com:9443/stream?streams=ethusdt@miniTicker
 # wss://stream.binance.com:9443/stream?streams=btcusdt@kline_3m
-# from home_page.models import *
+
 # a = Blog.objects.all()
 # x = a.values().last()['id']
 
-# print(x)
+
 btc_close = []
 btc_min = []
 x = input("Введите сумму:")
@@ -27,7 +28,7 @@ async def main():
         btc_min.append(data['k']['h'])
         btc_close.append(data['k']['c'])
         print (btc_close)
-        while x > max(btc_close):
+        while x > max(btc_close) or x< min(btc_close):
             data = json.loads(await client.recv())['data']
             event_time = time.localtime(data['E']//1000)
             print (f"{event_time.tm_hour}:{event_time.tm_min}:{event_time.tm_sec} -> Открытие - {data['k']['o']}, Максимум - {data['k']['h']}, Минимум - {data['k']['l']}, Закрытие - {data['k']['c']} ")
@@ -38,7 +39,7 @@ async def main():
             await asyncio.sleep(2)
         else:
             print ("Сумма есть!")
-            bot.polling()
+            # bot.polling()
             await asyncio.sleep(2)
             btc_close.clear()
             btc_min.clear()

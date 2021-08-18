@@ -7,7 +7,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, FormView
 from .forms import *
 from .models import *
-
+# from strategy.API import *
+# from strategy.bot import *
 
 # def home_page(request):
 #     return render(request, 'home_page/home_page.html')
@@ -61,13 +62,12 @@ class ContactFormView(FormView):
         # print(code)
         return super().form_valid(form)
 
-
+global x
 
 def botik(request):
     f = SummClientItog.objects.all()
-    x=f.values().first()['sum_client']
+    x=f.values().last()['sum_client']
     print (x)
-
     # from subprocess import call
     # a = call(["python", "API.py"])
     # a = subprocess.Popen([sys.executable, 'API.py'])

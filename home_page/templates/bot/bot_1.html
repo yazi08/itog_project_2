@@ -1,21 +1,21 @@
 {% extends "home_page/home_page.html" %}
-
+{% load static %}
 
 
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'bot/css/bot_1.css' %}">
 
-<form method="post">
-<h1>Регистрация</h1>
-    {{x}}
+    <p>
+    Задана сумма: {{x}}
+    </p>
 
-
-
-
-
+<img class = "client_img" src="{% static 'bot/gif/gifka.gif' %}" alt="Логотип">
 
 
-    <button class="btn btn-warning">Авторизация</button>
 
-</form>
+
+<!--    <button class="btn btn-warning">Авторизация</button>-->
+
+
 {% endblock %}
