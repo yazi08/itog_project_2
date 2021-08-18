@@ -5,7 +5,7 @@
 # 6gFDmF4ohM.T5SNvB&%9xj!h^1Hy:%Yc
 # TXforrAh79JExWk8
 import json
-import requests
+# import requests
 import  asyncio
 import websockets
 # from home_page.views import *
@@ -13,14 +13,16 @@ import websockets
 import time
 # wss://stream.binance.com:9443/stream?streams=ethusdt@miniTicker
 # wss://stream.binance.com:9443/stream?streams=btcusdt@kline_3m
+from . import models
 
-# a = Blog.objects.all()
-# x = a.values().last()['id']
-
+f = models.SummClientItog.objects.all()
+x = f.values().last()['sum_client']
+print(x)
 
 btc_close = []
 btc_min = []
-x = input("Введите сумму:")
+# x = input("Введите сумму:")
+
 async def main():
     url = "wss://stream.binance.com:9443/stream?streams=btcusdt@kline_5m"
     async with websockets.connect(url) as client:

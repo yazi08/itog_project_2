@@ -68,9 +68,13 @@ def botik(request):
     f = SummClientItog.objects.all()
     x=f.values().last()['sum_client']
     print (x)
+    #import os
+    #os.system('python home_page/API.py')
     # from subprocess import call
     # a = call(["python", "API.py"])
     # a = subprocess.Popen([sys.executable, 'API.py'])
     # code = a.wait()
+    import subprocess
+    p = subprocess.Popen('py home_page/API.py')
 
     return render(request, "bot/bot_1.html",{'x':x})
