@@ -13,16 +13,33 @@ import websockets
 import time
 # wss://stream.binance.com:9443/stream?streams=ethusdt@miniTicker
 # wss://stream.binance.com:9443/stream?streams=btcusdt@kline_3m
-from . import models
+import psycopg2
 
-f = models.SummClientItog.objects.all()
-x = f.values().last()['sum_client']
-print(x)
+
+con = psycopg2.connect(
+  database="tredebot_db",
+  user="tredebot",
+  password="1234567890lP",
+  host="127.0.0.1",
+  port="5432"
+)
+
+cur = con.cursor()
+cur.execute("SELECT sum_client from home_page_summclientitog")
+rows = cur.fetchall()
+a = rows[0]
+y = list(a)
+b = (y[0])
+x = str(b)
+cur = con.cursor()
+cur.execute("DELETE from home_page_summclientitog")
+con.commit()
+con.close()
 
 btc_close = []
 btc_min = []
 # x = input("Введите сумму:")
-
+print(x)
 async def main():
     url = "wss://stream.binance.com:9443/stream?streams=btcusdt@kline_5m"
     async with websockets.connect(url) as client:

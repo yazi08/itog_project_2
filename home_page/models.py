@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Blog(models.Model):
     name_blog = models.TextField('Название')
@@ -23,3 +24,8 @@ class SummClientItog(models.Model):
     #
     # class Meta:
     #     ordering = ['sum_client']
+
+class History(models.Model):
+    summ = models.FloatField('Сумма клиента')
+    
+
