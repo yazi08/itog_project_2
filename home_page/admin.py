@@ -3,4 +3,13 @@ from .models import *
 
 admin.site.register(Blog)
 
-admin.site.register(SummClientItog)
+
+@admin.register(HistoryClient)
+class HistoryClientAdmin(admin.ModelAdmin):
+    list_display = ('date','summ_history_client','who')
+
+
+
+@admin.register(SummClientItog)
+class HistoryClientAdmin(admin.ModelAdmin):
+    list_display = ('who_client','sum_client','date_client')

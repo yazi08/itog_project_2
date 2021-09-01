@@ -56,13 +56,25 @@ class ContactFormView(FormView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         # form.send_email()
+        form.instance.who_client = self.request.user
         form.save()
+
         # a = subprocess.Popen([sys.executable, 'API.py'])
         # code = a.wait()
         # print(code)
         return super().form_valid(form)
 
-global x
+# def bot(request):
+#     form = SummClientForm(request.POST)
+#     if form.is_valid():
+#         response = form.save(commit=False)
+#         response.user = request.user
+#         response.save()
+#         return redirect('client')
+#     return render(request, "bot/bot.html",{'form':form})
+
+
+
 
 def botik(request):
     f = SummClientItog.objects.all()

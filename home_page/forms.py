@@ -31,4 +31,5 @@ class SummClientForm(ModelForm):
     class Meta:
         model = SummClientItog
         fields = ['sum_client']
+        widgets = {'who_client': forms.HiddenInput()}
 

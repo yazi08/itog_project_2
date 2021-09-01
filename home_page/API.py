@@ -24,18 +24,39 @@ con = psycopg2.connect(
   port="5432"
 )
 
+print("Database opened successfully")
+
+
 cur = con.cursor()
-cur.execute("SELECT sum_client from home_page_summclientitog")
+cur.execute("SELECT sum_client,who_client_id,date_client from home_page_summclientitog")
+# cur.execute ("select username from  auth_user where id =(%i)"%a)
 rows = cur.fetchall()
-a = rows[0]
-y = list(a)
-b = (y[0])
-x = str(b)
+user = rows[0]
+
+
+sum=(user[0])
+id = user[1]
+
+print (id)
+# r = str(id)
+# print (type(r))
+cur.execute ("SELECT username FROM auth_user where id =%s" % id)
+itog = cur.fetchall()
+client =((itog[0])[0])
+
+x = str(sum)
+id_itog = str(id)
+
+cur = con.cursor()
+cur.execute(
+"INSERT INTO home_page_historyclient (summ_history_client,who_id,date) VALUES (%s,%s,now())" %(x,id_itog)
+
+)
+
 cur = con.cursor()
 cur.execute("DELETE from home_page_summclientitog")
 con.commit()
 con.close()
-
 btc_close = []
 btc_min = []
 # x = input("Введите сумму:")
@@ -58,7 +79,10 @@ async def main():
             await asyncio.sleep(2)
         else:
             print ("Сумма есть!")
+
             # bot.polling()
+            from datetime import datetime
+            datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             await asyncio.sleep(2)
             btc_close.clear()
             btc_min.clear()
