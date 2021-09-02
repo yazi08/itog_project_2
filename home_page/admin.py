@@ -6,7 +6,7 @@ admin.site.register(Blog)
 
 @admin.register(HistoryClient)
 class HistoryClientAdmin(admin.ModelAdmin):
-    list_display = ('date','summ_history_client','who')
+    list_display = ('date','data_end','summ_history_client','who')
 
 
 

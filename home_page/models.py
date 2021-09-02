@@ -24,7 +24,16 @@ class HistoryClient(models.Model):
     summ_history_client = models.FloatField('Сумма клиента',null=True)
     who = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     date = models.DateTimeField(auto_now_add=True,null=True)
-
+    data_end =models.DateTimeField(auto_now_add=True,null=True)
     def __str__(self):
         return f"{self.summ_history_client}"
+
+
+
+class IdPid(models.Model):
+    id_pid = models.IntegerField('id процесса',null=True)
+
+    def __str__(self):
+        return f"{self.id_pid}"
+
 

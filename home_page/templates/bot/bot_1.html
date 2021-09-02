@@ -9,9 +9,13 @@
     <p>
     Задана сумма: {{x}}
     </p>
+    {% if histor.data_end %}
+    <img class = "client_img" src="{% static 'bot/gif/gifka.gif' %}" alt="Логотип">
+    {% else %}
+    <p> Hi</p>
+    {% endif %}
 
-<img class = "client_img" src="{% static 'bot/gif/gifka.gif' %}" alt="Логотип">
-
+    <a href="{% url 'exit' %}"><li><button class="btn btn-warning">Exit</button></li></a>
 
 
 

@@ -77,6 +77,7 @@ class ContactFormView(FormView):
 
 
 def botik(request):
+    histor = HistoryClient.objects.all()
     f = SummClientItog.objects.all()
     x=f.values().last()['sum_client']
     print (x)
@@ -89,4 +90,19 @@ def botik(request):
     import subprocess
     p = subprocess.Popen('py home_page/API.py')
 
-    return render(request, "bot/bot_1.html",{'x':x})
+    return render(request, "bot/bot_1.html",{'x':x,'histor':histor})
+
+
+def exit():
+    import sys
+    sys.exit()
+
+
+def exit_1(request):
+    histor = HistoryClient.objects.all()
+    import subprocess
+    p = subprocess.Popen('py home_page/API.py')
+    subprocess.Popen.kill()
+    return render(request,"bot/bot_1.html",{'histor':histor})
+
+

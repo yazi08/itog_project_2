@@ -39,16 +39,19 @@ id_itog = str(id)
 
 cur = con.cursor()
 cur.execute(
-"INSERT INTO home_page_historyclient (summ_history_client,who_id,date) VALUES (%s,%s,now())" %(x,id_itog)
+"INSERT INTO home_page_historyclient (summ_history_client,who_id,date) VALUES (%s,%s,now()) RETURNING id" %(x,id_itog)
 
 )
+end = cur.fetchall()
+end_itog = str((end[0])[0])
+cur.execute(
+  """UPDATE home_page_historyclient
+  SET data_end = now()
+  WHERE id =(%s)
+  """%(end_itog)
 
-cur = con.cursor()
-cur.execute("DELETE from home_page_summclientitog")
+)
+# cur = con.cursor()
+# cur.execute("DELETE from home_page_summclientitog")
 con.commit()
 con.close()
-
-
-
-
-

@@ -10,5 +10,5 @@ urlpatterns = [
     path('logout/',views.logout_user, name = "logout"),
     path('bot/', views.ContactFormView.as_view(), name="bot"),
     path('botik/', views.botik, name="botik"),
-
+    path('exit/', views.exit, name="exit")
 ]
