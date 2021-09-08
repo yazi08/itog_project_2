@@ -17,7 +17,7 @@
 <aside class = "client_2">
   <h3>Бот по стратегии</h3>
   <img class = "client_img" src="{% static 'client/png/robot_2.png' %}" alt="Логотип">
-  <button  class="btn btn-warning">Перейти</button>
+  <button id = 'submit'  class="btn btn-warning">Перейти</button>
 </aside>
 
 <nav  class = 'menu'>
@@ -26,16 +26,18 @@
       <a class="sub-menu_link" href=""></a>
       <ul class="sub-menu_list">
         <li>
-
-          <button  class="btn btn-warning">Информация</button>
-
+          <a href="{% url 'history_table' %}"><button  class="btn btn-warning">Информация</button></a>
         </li>
 
       </ul>
     </li>
   </ul>
 
-
+  <script>
+    document.querySelector ('#submit').onclick = function(){
+      alert('Данная функция находится еще в разработке');
+      }
+  </script>
 </nav>
 
 

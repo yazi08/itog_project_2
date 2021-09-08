@@ -1,3 +1,19 @@
-p {
+.sum {
+
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 500px;
     color: #fff;
+}
+
+
+.but-sum {
+
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 160px;
+    color: #fff;
+
+
+
 }

@@ -6,20 +6,24 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'bot/css/bot_1.css' %}">
 
-    <p>
+    <p class = 'sum'>
     Задана сумма: {{x}}
     </p>
-    {% if histor.data_end %}
-    <img class = "client_img" src="{% static 'bot/gif/gifka.gif' %}" alt="Логотип">
-    {% else %}
-    <p> Hi</p>
-    {% endif %}
+<!--    {% if histor.data_end %}-->
+<!--    <img class = "client_img" src="{% static 'bot/gif/gifka.gif' %}" alt="Логотип">-->
+<!--    {% else %}-->
+<!--    <p> Hi</p>-->
+<!--    {% endif %}-->
 
-    <a href="{% url 'exit' %}"><li><button class="btn btn-warning">Exit</button></li></a>
+    <a id = 'submit' class="but-sum" href="{% url 'exit' %}"><button class="btn btn-warning">Завершить</button></a>
 
 
 
 <!--    <button class="btn btn-warning">Авторизация</button>-->
 
-
+  <script>
+    document.querySelector ('#submit').onclick = function(){
+      alert('Бот отключился');
+      }
+  </script>
 {% endblock %}

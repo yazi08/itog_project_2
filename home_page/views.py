@@ -1,10 +1,11 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, FormView
+from django.views.generic import CreateView, DetailView, ListView, FormView, TemplateView
 from .forms import *
 from .models import *
 # from strategy.API import *
@@ -23,8 +24,12 @@ class HomeDetailView(ListView):
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'register/register.html'
-    success_url = reverse_lazy('home_page')
+    success_url = reverse_lazy('client')
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('client')
 
 """Авторизация"""
 
@@ -38,8 +43,12 @@ class LoginUser(LoginView):
 
 
 """Страница клиента"""
-def client(request):
-    return render(request, 'client/client.html')
+class ClientView(LoginRequiredMixin,TemplateView):
+    template_name = "client/client.html"
+
+
+# def client(request):
+#         return render(request, 'client/client.html')
 
 
 """Разлогинить клиента"""
@@ -47,33 +56,18 @@ def logout_user(request):
     logout(request)
     return redirect('authentication')
 
-class ContactFormView(FormView):
+class ContactFormView(LoginRequiredMixin,FormView):
     template_name = 'bot/bot.html'
     form_class = SummClientForm
     success_url = reverse_lazy('botik')
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        # form.send_email()
+
         form.instance.who_client = self.request.user
         form.save()
 
-        # a = subprocess.Popen([sys.executable, 'API.py'])
-        # code = a.wait()
-        # print(code)
+
         return super().form_valid(form)
-
-# def bot(request):
-#     form = SummClientForm(request.POST)
-#     if form.is_valid():
-#         response = form.save(commit=False)
-#         response.user = request.user
-#         response.save()
-#         return redirect('client')
-#     return render(request, "bot/bot.html",{'form':form})
-
-
 
 
 def botik(request):
@@ -81,28 +75,31 @@ def botik(request):
     f = SummClientItog.objects.all()
     x=f.values().last()['sum_client']
     print (x)
-    #import os
-    #os.system('python home_page/API.py')
-    # from subprocess import call
-    # a = call(["python", "API.py"])
-    # a = subprocess.Popen([sys.executable, 'API.py'])
-    # code = a.wait()
     import subprocess
     p = subprocess.Popen('py home_page/API.py')
-
     return render(request, "bot/bot_1.html",{'x':x,'histor':histor})
 
 
-def exit():
-    import sys
-    sys.exit()
-
-
-def exit_1(request):
+def exit(request):
     histor = HistoryClient.objects.all()
     import subprocess
-    p = subprocess.Popen('py home_page/API.py')
-    subprocess.Popen.kill()
+    p = subprocess.Popen('py home_page/test.py')
     return render(request,"bot/bot_1.html",{'histor':histor})
 
 
+def about(request):
+     return render(request, 'home_page/o_nas.html')
+
+def contacts(request):
+    return render(request, 'home_page/contacts.html')
+
+
+
+def history_table(request):
+
+    context = {
+        'posts': HistoryClient.objects.filter(who=request.user),
+
+    }
+
+    return render(request, 'history_table/history_table.html', context)

@@ -1,0 +1,28 @@
+{% extends "home_page/home_page.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'history_table/css/history_table.css' %}">
+
+<table class="table_sort" border="1" width="100%" cellpadding="5">
+    <tr>
+        <th>Дата</th>
+        <th>Пользователь</th>
+        <th>Сумма</th>
+        <th>Завершение</th>
+
+    </tr>
+    {% for t in posts %}
+        <tr>
+        <th>{{t.date}}</th>
+        <th>{{t.who}}</th>
+        <th>{{t.summ_history_client}}</th>
+        <th>{{t.data_end}}</th>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock %}
+
